@@ -1,0 +1,27 @@
+<div *ngFor="let user of userList" class="ui cards" [class.yellow]="" >
+  <div class="card">
+    <div class="content">
+      <div class="userList">
+        <img *ngIf="user.turn === 1" class="right floated mini ui image circular" src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+        <img *ngIf="user.turn === 2" class="right floated mini ui image circular" src="https://semantic-ui.com/images/avatar/large/jenny.jpg">
+        <img *ngIf="user.turn === 3" class="right floated mini ui image circular" src="https://semantic-ui.com/images/avatar/large/christian.jpg">
+        <img *ngIf="user.turn === 4" class="right floated mini ui image circular" src="https://semantic-ui.com/images/avatar/large/stevie.jpg">
+        <div class="header">
+          <a [class.blue]="user.turn === 2" [class.teal]="user.turn === 1" [class.purple]="user.turn === 3" [class.violet]="user.turn === 4"
+            class="ui ribbon label"> {{ user.turn }} </a> {{user.displayName}}
+        </div>
+        <div class="meta">
+            <div *ngIf="user.status === 'offline'" style="display:inline;"><a class="ui red empty circular label"> </a></div>
+            <div *ngIf="user.status === 'online'" style="display:inline;"><a class="ui green empty circular label"> </a></div>
+            <span>{{user.status}}</span>
+        </div>
+        <div class="extra content">
+          <div class="ui two buttons">
+            <div class="ui basic green button">0</div>
+            <div class="ui basic red button">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

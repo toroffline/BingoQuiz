@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>
+  <b>Create New Room</b>
+</h1>
+
+<div mat-dialog-content>
+  <div class="ez-container">
+    <mat-form-field>
+      ROOM NAME
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-checkbox [(ngModel)]="data.hasPass">ROOM PASSWORD</mat-checkbox>
+      <input matInput [(ngModel)]="data.password" disabled="{{!data.hasPass}}">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-select  placeholder="NO OF PLAYER" [(ngModel)]="data.noPlayer">
+        <mat-option *ngFor="let pn of playerno" [value]="pn.value">
+          {{ pn.text }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancle</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

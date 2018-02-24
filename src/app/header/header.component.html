@@ -1,0 +1,15 @@
+
+<nav class="navbar navbar-fixed-top w3-card">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Bingo Quiz Board Game</a>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li><div *ngIf="urlIsRoomlist" class="navbar-brand" (click)="gotoRoom()">Room list</div></li>
+    <li><div class="navbar-brand inactiveLink"><span class="glyphicon glyphicon-cloud"></span> {{userName}} 's connecting</div></li>  
+    <li><div class="navbar-brand _red _rightmost" href="" (click)="logout()">(logout)</div></li>  
+  </ul>
+   
+  
+</nav>
+

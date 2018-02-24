@@ -1,0 +1,180 @@
+<app-header [roomid]="roomid" [noJoined]="noJoined"></app-header>
+
+<div class="ui grid ui_padd">
+  <div class="three wide column">
+    <app-user-list [roomid]="roomid"></app-user-list>
+  </div>
+  <div class="seven wide column">
+    <div style="text-align:center;color:white;">
+      <h1> Turn: {{ turn }} </h1>
+    </div>
+    <table class="ui inverted table" border=2>
+      <tr align="center">
+        <td *ngFor="let q of q51; let i = index;">
+          <button mat-button class='_fitIn' (click)="selectQuestion(q,i)" [disabled]="!unlockAllButton && buttArr[i]">
+            <div *ngIf="buttArr[i]">
+              {{ i + 1 }}
+            </div>
+            <div *ngIf="!buttArr[i]">
+               X
+            </div>
+          </button>
+        </td>
+      </tr>
+      <tr align="center">
+        <td *ngFor="let q of q52; let i = index;">
+          <button mat-button class='_fitIn' (click)="selectQuestion(q,i+5)" [disabled]="!unlockAllButton"> {{ i + 6 }} </button>
+        </td>
+      </tr>
+      <tr align="center">
+        <td>
+          <button mat-button class='_fitIn' (click)="selectQuestion(q53[0],10)" [disabled]="!unlockAllButton"> {{ 11 }} </button>
+        </td>
+        <td>
+          <button mat-button class='_fitIn' (click)="selectQuestion(q53[1],11)" [disabled]="!unlockAllButton"> {{ 12 }} </button>
+        </td>
+        <td>
+          <button mat-button class='_fitIn'>
+            <div class="ui yellow circular label">FREE</div>
+          </button>
+        </td>
+        <td>
+          <button mat-button class='_fitIn' (click)="selectQuestion(q53[3],12)" [disabled]="!unlockAllButton"> {{ 14 }} </button>
+        </td>
+        <td>
+          <button mat-button class='_fitIn' (click)="selectQuestion(q53[4],13)" [disabled]="!unlockAllButton"> {{ 15 }} </button>
+        </td>
+      </tr>
+      <tr align="center">
+        <td *ngFor="let q of q54; let i = index;">
+          <button mat-button class='_fitIn' (click)="selectQuestion(q,i+14)" [disabled]="!unlockAllButton"> {{ i + 16 }} </button>
+        </td>
+      </tr>
+      <tr align="center">
+        <td *ngFor="let q of q55; let i = index;">
+          <button mat-button class='_fitIn' (click)="selectQuestion(q,i+19)" [disabled]="!unlockAllButton"> {{ i + 21 }} </button>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div *ngIf="question_ready" class="six wide column">
+    <div style="text-align:center;color:white;">
+      <h1> Question </h1>
+    </div>
+    <div style="text-align:right;color:white;" *ngIf="question_ready"> {{tick}}
+      <mat-progress-bar [color]="progressbarColor" [mode]="mode" [value]="tick" [bufferValue]="100">
+      </mat-progress-bar>
+    </div>
+    <div class="ui segments">
+      <div class="ui segment">
+        <p>{{ questionFront }}</p>
+      </div>
+      <div class="ui horizontal segments">
+        <div class="ui red segment">
+          a.
+          <div *ngIf="pt1Ans==='c1'" class="playerAns">
+            <a class="ui teal playerAns label"> 1 </a>
+          </div>
+          <div *ngIf="pt2Ans==='c1'" class="playerAns">
+            <a class="ui blue playerAns label"> 2 </a>
+          </div>
+          <div *ngIf="pt3Ans==='c1'" class="playerAns">
+            <a class="ui purple playerAns label"> 3 </a>
+          </div>
+          <div *ngIf="pt4Ans==='c1'" class="playerAns">
+            <a class="ui violet playerAns  label"> 4 </a>
+          </div>
+        </div>
+        <div class="ui red segment">
+          <button mat-button class='_fitIn2' (click)="confirmAnswer('c1')" [disabled]="ansLock" [class.ansSelected]="c1Selected"> {{ c1Front }} </button>
+        </div>
+      </div>
+      <div class="ui horizontal segments">
+        <div class="ui orange segment">
+          b.
+          <div *ngIf="pt1Ans==='c2'" class="playerAns">
+            <a class="ui teal playerAns label"> 1 </a>
+          </div>
+          <div *ngIf="pt2Ans==='c2'" class="playerAns">
+            <a class="ui blue playerAns label"> 2 </a>
+          </div>
+          <div *ngIf="pt3Ans==='c2'" class="playerAns">
+            <a class="ui purple playerAns label"> 3 </a>
+          </div>
+          <div *ngIf="pt4Ans==='c2'" class="playerAns">
+            <a class="ui violet playerAns label"> 4 </a>
+          </div>
+        </div>
+        <div class="ui orange segment">
+          <button mat-button class='_fitIn2' (click)="confirmAnswer('c2')" [disabled]="ansLock" [class.ansSelected]="c2Selected"> {{ c2Front }} </button>
+        </div>
+      </div>
+      <div class="ui horizontal segments">
+        <div class="ui yellow segment">
+          c.
+          <div *ngIf="pt1Ans==='c3'" class="playerAns">
+            <a class="ui teal playerAns label"> 1 </a>
+          </div>
+          <div *ngIf="pt2Ans==='c3'" class="playerAns">
+            <a class="ui blue playerAns label"> 2 </a>
+          </div>
+          <div *ngIf="pt3Ans==='c3'" class="playerAns">
+            <a class="ui purple playerAns label"> 3 </a>
+          </div>
+          <div *ngIf="pt4Ans==='c3'" class="playerAns">
+            <a class="ui violet playerAns label"> 4 </a>
+          </div>
+        </div>
+        <div class="ui yellow segment">
+          <button mat-button class='_fitIn2' (click)="confirmAnswer('c3')" [disabled]="ansLock" [class.ansSelected]="c3Selected"> {{ c3Front }} </button>
+        </div>
+      </div>
+      <div class="ui horizontal segments">
+        <div class="ui olive segment">
+          a.
+          <div *ngIf="pt1Ans==='c4'" class="playerAns">
+            <a class="ui teal playerAns label"> 1 </a>
+          </div>
+          <div *ngIf="pt2Ans==='c4'" class="playerAns">
+            <a class="ui blue playerAns label"> 2 </a>
+          </div>
+          <div *ngIf="pt3Ans==='c4'" class="playerAns">
+            <a class="ui purple playerAns label"> 3 </a>
+          </div>
+          <div *ngIf="pt4Ans==='c4'" class="playerAns">
+            <a class="ui violet playerAns label"> 4 </a>
+          </div>
+        </div>
+        <div class="ui olive segment">
+          <button mat-button class='_fitIn2' (click)="confirmAnswer('c4')" [disabled]="ansLock" [class.ansSelected]="c4Selected"> {{ c4Front }} </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="waiting" class="six wide column">
+    <div class="ui segment">
+      {{ message }}
+    </div>
+    <button [class.black]="isValid()" class="rdy_button ui blue button" mat-button [disabled]="!isValid()" (click)="startGame()">
+      Start! </button>
+  </div>
+
+  <div *ngIf="start && !question_ready" class="six wide column">
+    <div class="ui segment">
+      {{ questionFront }} <br/>
+      {{ message }} <br/>
+       {{message2}}
+    </div>
+    <!-- <button *ngIf="waiting" [class.black]="isValid()" class="rdy_button ui blue button" mat-button [disabled]="!isValid()" (click)="startGame()">
+      Start! </button> -->
+    <button *ngIf="nextQuestionReady" class="rdy_button ui blue button" mat-button (click)="nextQuestion()">
+      Ok, next question </button>
+  </div>
+
+
+
+</div>

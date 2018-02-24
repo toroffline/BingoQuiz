@@ -1,0 +1,12 @@
+body {
+    background-color: #DADADA;
+  }
+
+.column {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+tr{
+    cursor: pointer;
+}

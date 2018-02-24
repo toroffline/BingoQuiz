@@ -1,0 +1,42 @@
+<table class="ui inverted table" border=2>
+    <tr align="center">
+        <td>
+            <button mat-button (click)="hide()">
+                <div *ngIf="xxx">1</div>
+                <div *ngIf="!xxx">
+                    <table>
+                        <tr>
+                            <td><a class="ui teal label"> 1 </a></td>
+                            <td><a class="ui blue label"> 2 </a></td>
+                        </tr>
+                        <tr>
+                            <td><a class="ui purple label"> 3 </a></td>
+                            <td><a class="ui violet label"> 4 </a></td>
+                        </tr>
+                    </table>
+                </div>
+            </button>
+        </td>
+    </tr>
+
+</table>
+
+    {{timing}}
+
+    <mat-progress-spinner class="example-margin" style="float: right;" [color]="color" [mode]="mode" [value]="timing" [diameter]="50">
+    </mat-progress-spinner>
+
+
+    <div class="ui orange segment">
+        <sm-dimmer #dimmer>
+            <div class="center">
+                <h2 class="ui inverted icon header">
+                    <i class="mail icon"></i>
+                    Dimmer Message
+                    <div class="sub header">Dimmer sub-header</div>
+                </h2>
+            </div>
+        </sm-dimmer>
+        <sm-button (click)="dimmer.show({opacity: .7, transition: 'fade'})" class="primary">Page dimmer</sm-button>
+    </div>
+    <button (click)="openDialog1()">eieiza</button>

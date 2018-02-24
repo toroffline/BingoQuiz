@@ -1,0 +1,35 @@
+.navbar {
+    display: inline-block;
+    color:white;
+    background-color: hsl(0, 0%, 33%);
+    display: block;
+    position: relative;
+    
+    height: 40px;
+    overflow: hidden;
+    line-height: 40px;
+    font-size: rem(14px);
+    font-weight: 400;
+    text-rendering: auto;
+    transform: translate(0,0);
+}
+.navbar-brand {
+    cursor: pointer;
+}
+
+.navbar-brand:hover{
+    background-color:  hsl(0, 0%, 70%);
+}
+
+._red {
+    color: #D95C5C;
+}
+
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+ }
+ 
+ ._rightmost {
+     margin-right: 1em;
+ }

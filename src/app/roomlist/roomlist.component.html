@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h1 class="ui teal image header">
+            <div class="content">
+                Room Lists
+            </div>
+        </h1>
+        <button class="circular medium right floated ui icon button" style="margin-right: 50px;" (click)="createRoom()">
+
+            Create New Room
+            <i class="plus icon"></i>
+        </button>
+        <table class="ui selectable celled table">
+            <thead>
+                <tr class="center aligned">
+                    <th>No.</th>
+                    <th>Room Name</th>
+                    <th>Password</th>
+                    <th>#Players</th>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr *ngFor="let room of rooms; let i = index" class="center aligned" (click)="join(room)">
+                    <td> {{ i+1 }} </td>
+                    <td> {{ room.name }} </td>
+                    <td>
+                        <!-- {{ room.hasPass }} -->
+                        <i *ngIf="room.hasPass" class="lock icon"></i>
+                        <i *ngIf="!room.hasPass" class="unlock icon"></i>
+                    </td>
+                    <td> {{ room.joined }} / {{ room.noPlayer }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+    <b style="text-align:center;">Confirm {{message}}</b>
+</h1>
+
+<div mat-dialog-actions>
+    <div class="ui large buttons">
+        <button class="blue ui button" mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+        <div class="or"></div>
+        <button class="grey ui button" mat-button (click)="onNoClick()">No</button>
+    </div>
+</div>

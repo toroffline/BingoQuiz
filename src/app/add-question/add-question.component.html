@@ -1,0 +1,85 @@
+<app-header></app-header>
+
+<mat-tab-group>
+  <mat-tab label="List">
+    <h1 class="ui icon header" style="margin-left:20px;">
+      <i class="talk outline icon"></i>
+      <div class="content">
+        Add Question Here
+      </div>
+    </h1>
+
+    <!-- <form (ngSubmit)="addQuestion(AddQuestionForm); AddQuestionForm.reset()" #AddQuestionForm="ngForm">
+    <label for="description"> Question</label>
+    <textarea type="text" name="question" ngModel> </textarea>
+    <br>
+    <label for="name"> Choice1</label>
+    <input type="text" name="c1" ngModel>
+    <br>
+    <label for="name"> Choice2</label>
+    <input type="text" name="c2" ngModel>
+    <br>
+    <label for="name"> Choice3</label>
+    <input type="text" name="c3" ngModel>
+    <br>
+    <label for="name"> Choice4</label>
+    <input type="text" name="c4" ngModel>
+    <br>
+    <label for="name"> Answer</label>
+    <input type="text" name="ans" ngModel>
+    <br>
+
+    <button type="submit">Submit</button>  
+  </form>
+-->
+
+    <table class='ui selectable inverted table w3-card'>
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Question</th>
+          <th>C1</th>
+          <th>C2</th>
+          <th>C3</th>
+          <th>C4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of q_data | async">
+          <td>{{data.$key}}</td>
+          <td>{{data.question}}</td>
+          <td [class.positive]="data.ans === 'c1'">{{data.c1}}</td>
+          <td [class.positive]="data.ans === 'c2'">{{data.c2}}</td>
+          <td [class.positive]="data.ans === 'c3'">{{data.c3}}</td>
+          <td [class.positive]="data.ans === 'c4'">{{data.c4}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-tab>
+  
+  <mat-tab label="Add">
+    <form class="task-form w3-card" (ngSubmit)="submit();" novalidate>
+      <label for="description"> Question</label>
+      <input [(ngModel)]="this.question" autocomplete="off" autofocus class="task-form__input" name="question" placeholder="Question"
+        required type="text">
+
+      <label for="description"> Choice1</label>
+      <input [(ngModel)]="c1" autocomplete="off" autofocus class="task-form__input" name="c1" placeholder="1" required type="text">
+
+      <label for="description"> Choice2</label>
+      <input [(ngModel)]="title" autocomplete="c2" autofocus class="task-form__input" name="c2" placeholder="2" required type="text">
+
+      <label for="description"> Choice3</label>
+      <input [(ngModel)]="c3" autocomplete="off" autofocus class="task-form__input" name="c3" placeholder="3" required type="text">
+
+      <label for="description"> Choice4</label>
+      <input [(ngModel)]="c4" autocomplete="off" autofocus class="task-form__input" name="c4" placeholder="4" required type="text">
+
+      <label for="description"> Ans</label>
+      <input [(ngModel)]="ans" autocomplete="off" autofocus class="task-form__input" name="ans" placeholder="ans" required type="text">
+      <br>
+      <br>
+      <button type="submit" class="ui secondary button">Submit</button>
+    </form>
+  </mat-tab>
+</mat-tab-group>
